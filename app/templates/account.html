@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if is_auth %}
+        <div id="AddPost">
+            <form action="", method="post">
+                <p>
+                {{ create_form.title.label }}
+                {{ create_form.title(size=50) }}
+                </p>
+                <p>
+                    {{ create_form.content.label }}<br>
+                    {{ create_form.content(rows=30, cols=100) }}
+                </p>
+                {{ create_form.submit() }}
+            </form>
+        </div>
+    {% else %}
+        <p>Вы не авторизированы</p>
+    {% endif %}
+
+{% endblock %}

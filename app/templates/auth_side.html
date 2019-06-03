@@ -1,0 +1,34 @@
+
+
+<ul class="tab-group">
+                        <li class="tablink active" onclick="handleTabChange(event, 'Login')"><a>Авторизация</a></li><li class="tablink" onclick="handleTabChange(event, 'Registration')"><a>Регистрация</a></li>
+                    </ul>
+                    <div id="Login" class="tab-content" style="display: flex">
+                        <form class="auth-form" action="" method="post">
+                            {{ auth_form.username_login(placeholder="Введите имя пользователя") }}
+                            {{ auth_form.password_login(placeholder="Введите пароль") }}
+                            <p>{{ auth_form.remember_me() }} {{ auth_form.remember_me.label }}</p>
+                            {{ auth_form.submit_login() }}
+                        </form>
+                    </div>
+                    <div id="Registration" class="tab-content">
+                        <form class="auth-form" action="" method="post">
+                            {{ reg_form.username_reg(placeholder="Введите имя пользователя") }}
+                            {% for error in reg_form.username_reg.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                            {{ reg_form.email_reg(placeholder="Введите email") }}
+                            {% for error in reg_form.email_reg.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                            {{ reg_form.password_reg(placeholder="Введите пароль") }}
+                            {% for error in reg_form.password_reg.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                            {{ reg_form.password_reg2(placeholder="Введите пароль повторно") }}
+                             {% for error in reg_form.password_reg2.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                            {{ reg_form.submit_reg() }}
+                        </form>
+                    </div>

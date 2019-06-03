@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Главная страница{% endblock %}
+{% block content %}
+    {% for post in posts %}
+        <article class="post-container"  {% if is_auth %}onclick="window.location = '/post/id={{ post.id }}'" {% endif %}>
+            <h1>{{ post.title }}</h1>
+            <article>
+                <p>{{ post.content }}</p>
+            </article>
+            <footer class="post-footer">
+                <div class="post-username"><p>{{ post.username }}</p></div>
+                <div class="post-date"><p>{{ post.date }}</p></div>
+            </footer>
+        </article>
+    {% endfor %}
+{% endblock %}

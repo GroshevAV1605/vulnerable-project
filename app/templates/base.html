@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        {% if title %}
+        <title>{{ title }}</title>
+        {% else %}
+        <title>YPO</title>
+        {% endif %}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}" />
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    </head>
+    <body>
+        <div id="root">
+            <div class="site-header">
+                <ul class="header-menu" role="banner">
+                    <li><a href="/index">Главная</a></li>
+                    <li><a href="#">...</a></li>
+                </ul>
+                <a href="#" class="site-logo">LOGO</a>
+                <form action="?" method="get" class="site-search" role="form" onsubmit="searchItem();return false;">
+                    <input id="searchPost" class="site-search" type="search" placeholder="Search" value=""/>
+                    <input type="submit" class="btn search-btn" value="Submit"/>
+                </form>
+            </div>
+
+            <div class="content-container">
+                <main class="feed-container">
+                    {% block content %}{% endblock %}
+                </main>
+                <div class="side-bar-container">
+                    {% if is_auth %}
+                    {% include "logout_side.html" %}
+                    {% else %}
+                    {% include "auth_side.html" %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
